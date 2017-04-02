@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Akka.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Mermaid Diagrams -->
+    <!--<link rel="stylesheet" href="css/mermaid.dark.css">
+    <script src="lib/js/mermaid.min.js"></script>-->
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section data-markdown>
+          <script type="text/template">
+          ##Don’t call me frontend framework!
+          a quick ride on
+          <img data-src="./images/akkajs_nobg.png" />
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ###Who am I?
+          ![alt text](./images/io.png "")<!-- .element: style="max-height: 300px; margin: 0px 0px 0px 0px;"-->
+
+          ![alt text](./images/nokia2.png "")<!-- .element: style="max-height: 100px; margin: 0px 0px 0px 0px;"-->
+          - GitHub [andreaTP]()
+          - Twitter [@and_prf]()
+          </script>
+        </section>
+
+        <section>
+          <section><img data-src="./images/one.png" /></section>
+          <section><img data-src="./images/two.png" /></section>
+          <section><img data-src="./images/three.png" /></section>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ##How does it work?
+            - compiler plugins<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            - java std lib<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            - reflection<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            - IR patches<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            - ...<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+          #Who cares?<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ##Why should I care?
+          #Why not?<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+          ###be serious<!-- .element: class="fragment" data-fragment-index="2" -->
+          ##keep ride actors on JS!!!<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+          </script>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ##Exercise:
+          A fullstack POC for Twitter streaming service.<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+          </script>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Backend
+            project configuration
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Backend Architecture
+              - WebSocketServer -> Actor<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+              - WebSocketChannel -> Actor<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+              - TwitterService -> Actor<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Backend Architecture
+              - WebSocketServer -> Actor -> <!-- .element: style="color: white;" class="fragment" data-fragment-index="1" --><a href="https://www.npmjs.com/package/websocket">Node Websocket</a>
+              - WebSocketChannel -> Actor -><!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->Testkit!
+              - TwitterService -> Actor -> <!-- .element: style="color: white;" class="fragment" data-fragment-index="3" --><a href="https://www.npmjs.com/package/node-tweet-stream">Node Tweet Stream</a>
+            </script>
+          </section>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ##Lessons learned
+            - Concepts separation<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            - Callback hell<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+            - Free concurrency isolation<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+
+          in ~150 LOC :-)<!-- .element: style="color: white;" class="fragment" data-fragment-index="4" -->
+          </script>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Frontend
+            project configuration
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Frontend Architecture
+              - UI -> Dom -> Actors<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+              - WebSocketChannel -> Actor -> Stream<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Frontend Architecture
+            ###UI<!-- .element: style="color: white;"-->
+              - UIActor<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+                - NavBarActor<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+                - TrackerActor<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+                - CarouselActor<!-- .element: style="color: white;" class="fragment" data-fragment-index="4" -->
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+            ##Frontend Architecture
+            ###WebSocketChannel<!-- .element: style="color: white;"-->
+            ~> WebSocket<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+
+            ~> Stream<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+
+            ~> UIActor<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+            </script>
+          </section>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+          ##Lessons learned
+            - Same programming model<!-- .element: style="color: white;" class="fragment" data-fragment-index="1" -->
+            - Reusability<!-- .element: style="color: white;" class="fragment" data-fragment-index="2" -->
+            - Free framework features<!-- .element: style="color: white;" class="fragment" data-fragment-index="3" -->
+
+          in < 300 LOC :-)<!-- .element: style="color: white;" class="fragment" data-fragment-index="4" -->
+          </script>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <script type="text/template">
+              ##A few words about Akka.JS
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ##It's Akka!
+              ####LOC statistics<!-- .element: style="color: white;" -->
+              - Akka shared ~ 24741<!-- .element: class="fragment" data-fragment-index="2" -->
+              - Akka JS ~ 3962<!-- .element: class="fragment" data-fragment-index="3" -->
+              - Akka Stream shared ~ 30653<!-- .element: class="fragment" data-fragment-index="4" -->
+              - Akka Stream JS ~ 1238<!-- .element: class="fragment" data-fragment-index="5" -->
+            </script>
+          </section>
+          <section data-markdown>
+            <script type="text/template">
+              ##What next?
+              - Remote<!-- .element: class="fragment" data-fragment-index="1" -->
+              - JS interop<!-- .element: class="fragment" data-fragment-index="2" -->
+              - Typed<!-- .element: class="fragment" data-fragment-index="3" -->
+              - Performances<!-- .element: class="fragment" data-fragment-index="4" -->
+              - ...<!-- .element: class="fragment" data-fragment-index="5" -->
+            </script>
+          </section>
+        </section>
+
+        <section data-markdown>
+          <script type="text/template">
+            ##Thank you!
+            and remember, you can help! :-)<!-- .element: class="fragment" data-fragment-index="1" -->
+
+            [https://github.com/akka-js/akka.js](Akka.js)<!-- .element: class="fragment" data-fragment-index="2" -->
+          </script>
+        </section>
+
+      </div>
+    </div>
+     <script src="lib/js/head.min.js"></script>
+     <script src="js/reveal.js"></script>
+     <script>
+       //mermaid.initialize({startOnLoad:true});
+       // More info https://github.com/hakimel/reveal.js#configuration
+       Reveal.initialize({
+         history: true,
+
+         // More info https://github.com/hakimel/reveal.js#dependencies
+         dependencies: [
+           { src: 'plugin/markdown/marked.js' },
+           { src: 'plugin/markdown/markdown.js' },
+           { src: 'plugin/notes/notes.js', async: true },
+           { src: './plugin/externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } }
+         ]
+       });
+       //Reveal.configure({ slideNumber: 'c/t' });
+     </script>
+	</body>
+</html>
