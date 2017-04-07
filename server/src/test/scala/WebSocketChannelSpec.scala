@@ -20,18 +20,21 @@ class WebSocketChannelSpec extends TestKit(ActorSystem("WSCSpec"))
 
       val probe = TestProbe()
 
-      //mocking the probe
-      probe.asInstanceOf[js.Dynamic]
-        .updateDynamic("send")((x: Any) => probe.ref ! (x))
+      val mockWSChannel = js.Dynamic.literal(
+        "send" -> {(x: Any) => probe.ref ! (x)}
+      )
 
       val channelActor = system.actorOf(Props(
-        new WSTwitterChannelActor(probe.asInstanceOf[js.Dynamic]) {
+        new WSTwitterChannelActor(mockWSChannel) {
           override def preStart() = {}
       }))
 
       channelActor ! "foo"
-
       probe.expectMsg("foo")
+
+      channelActor ! "bar"
+      probe.expectMsg("bar")
+
     }
   }
 }

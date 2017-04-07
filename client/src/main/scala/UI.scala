@@ -10,8 +10,6 @@ import scalatags.JsDom.all._
 
 import TwitterMsgs._
 
-object UIMsgs {}
-
 class UIActor() extends DomActor {
   override val domElement = Some(getElem("root"))
 

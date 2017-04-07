@@ -6,8 +6,8 @@ lazy val root =
       scalaVersion := "2.12.1",
       scalacOptions := Seq("-feature", "-language:_", "-deprecation"),
       libraryDependencies ++= Seq(
-        "org.akka-js" %%% "akkajsactorstream" % "0.2.5.0-RC2-SNAPSHOT",
         "com.lihaoyi" %%% "scalatags" % "0.6.3",
+        "org.akka-js" %%% "akkajsactorstream" % "0.2.5.0-RC2-SNAPSHOT",
         "org.akka-js" %%% "akkajsstreamtestkit" % "0.2.5.0-RC2-SNAPSHOT" % "test"
       ),
       jsDependencies +=
