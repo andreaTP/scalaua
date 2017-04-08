@@ -9,6 +9,8 @@ lazy val root =
       libraryDependencies ++= Seq(
         "com.lihaoyi" %%% "scalatags" % "0.6.3",
         "org.akka-js" %%% "akkajsactorstream" % "0.2.5.0-RC2-SNAPSHOT",
+        "org.scalatest" %%% "scalatest" % "3.0.0" % "test",
+        "org.akka-js" %%% "akkajstestkit" % "0.2.5.0-RC2-SNAPSHOT" % "test",
         "org.akka-js" %%% "akkajsstreamtestkit" % "0.2.5.0-RC2-SNAPSHOT" % "test"
       ),
       jsDependencies +=
