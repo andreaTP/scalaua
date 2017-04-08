@@ -5,6 +5,7 @@ lazy val root =
     .settings(
       scalaVersion := "2.12.1",
       scalacOptions := Seq("-feature", "-language:_", "-deprecation"),
+      resolvers += Resolver.sonatypeRepo("snapshots"),
       libraryDependencies ++= Seq(
         "com.lihaoyi" %%% "scalatags" % "0.6.3",
         "org.akka-js" %%% "akkajsactorstream" % "0.2.5.0-RC2-SNAPSHOT",

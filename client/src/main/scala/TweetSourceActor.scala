@@ -24,7 +24,11 @@ object TwitterFlow {
       .map(elem => {
         try {
           val tweet = js.JSON.parse(elem)
-          Some(TwitterMsgs.Tweet(s"${tweet.user.name}", s"${tweet.text}"))
+          Some(
+            TwitterMsgs.Tweet(
+              s"${tweet.user.name}", s"${tweet.text}"
+            )
+          )
         } catch {
           case NonFatal(e) => None
         }
